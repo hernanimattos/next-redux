@@ -1,19 +1,19 @@
-import React from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { namespaceConfig } from 'fast-redux'
-import Link from 'next/link'
+import React from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { namespaceConfig } from "fast-redux";
+import Link from "next/link";
 
-const DEFAULT_STATE = { version: 1 }
+const DEFAULT_STATE = { version: 1 };
 
 const { actionCreator, getState: getAboutState } = namespaceConfig(
-  'about',
+  "about",
   DEFAULT_STATE
-)
+);
 
-const bumpVersion = actionCreator('bumpVersion', function (state, increment) {
-  return { ...state, version: state.version + increment }
-})
+const bumpVersion = actionCreator("bumpVersion", function(state, increment) {
+  return { ...state, version: state.version + increment };
+});
 
 const About = ({ version, bumpVersion }) => (
   <div>
@@ -22,21 +22,21 @@ const About = ({ version, bumpVersion }) => (
     <p>
       <button onClick={e => bumpVersion(1)}>Bump version!</button>
     </p>
-    <Link href='/'>
+    <Link href="/">
       <a>Homepage</a>
     </Link>
   </div>
-)
+);
 
-function mapStateToProps (state) {
-  return getAboutState(state, 'version')
+function mapStateToProps(state) {
+  return getAboutState(state, "version");
 }
 
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ bumpVersion }, dispatch)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ bumpVersion }, dispatch);
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(About)
+)(About);

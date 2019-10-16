@@ -1,17 +1,13 @@
-import React from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { namespaceConfig } from 'fast-redux'
-import fetch from 'isomorphic-unfetch'
-import Link from 'next/link'
-
-import { Store } from './store'
+import React from "react";
+import { connect } from "react-redux";
+import Link from "next/link";
+import { Store } from "./store";
 
 const {
   storeHome: {
-    mappers: { mapDispatchToProps, mapStateToProps },
-  },
-} = Store
+    mappers: { mapDispatchToProps, mapStateToProps }
+  }
+} = Store;
 
 const Homepage = props => (
   <div>
@@ -25,18 +21,18 @@ const Homepage = props => (
       <a>About Us</a>
     </Link>
   </div>
-)
+);
 
 Homepage.getInitialProps = async props => {
-  await console.log(props, 'llll')
+  await console.log(props, "llll");
   // props.
   // const res = await fetch('https://api.github.com/repos/developit/preact')
   // const json = await res.json() // better use it inside try .. catch
   // console.log(json, 'fggggg')
   // return { stars: json.stargazers_count }
-}
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Homepage)
+)(Homepage);
